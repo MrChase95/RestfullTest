@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <title>Home</title>
+    <script>
+      function newPhoneTextField(){
+        var temp = document.getElementById("textInputs");
+        temp.innerHTML += '<div class="input"><label for="telefone">Telefone</label><input type="text" id="telefone" name="telefone"></div>';
+      }
+
+      function makeErrors(){
+        console.log(err);
+        if (err){
+        for (item in err) {
+          
+            var temp = err[item];
+            temp.innerHTML = "<p> ERROR: " + item.toString() + "</p>";
+
+          
+        } 
+      }
+    }
+    
+      
+    </script>
+  </head>
+  <body>
+    <section class="insert">
+      <h3>Insert Data</h3>
+      <form action="/submit" method="post" >
+        <div id= "textInputs">
+        <div class="input">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="input">
+            <label for="text">Email</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="input">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha">
+        </div>
+        <div class="input">
+          <label for="confirmesenha">Confirme Senha</label>
+          <input type="password" id="confirmesenha" name="confirmesenha">
+        </div>
+        <div class="input">
+          <label for="telefone">Telefone</label>
+          <input type="text" id="telefone" name="telefone">
+        </div>
+        </div>
+          <button type="submit">INSERT</button>
+          <button type="button" onclick="newPhoneTextField()">NEW PHONE</button>
+      </form>
+  </section>
+  <section class="get">
+      <h3>Get Data</h3>
+      
+      <div>
+        <form action="/get-data" method="post">
+          <div class="input">
+              <label for="id">ID</label>
+              <input type="text" id="id" name="id">
+          </div>
+          <button type="submit">LOAD DATA</button>
+        </form>
+          <% for( i in itens){%>
+              <article class="item">
+                  <div>ID: <%= itens[i]._id%></div>
+                  <div>Name: <%= itens[i].userName%></div>
+                  <div>Email: <%= itens[i].userEmail%></div>
+                  <div>Senha: <%= itens[i].userPassword%></div>
+                  <div>Telefone: <%= itens[i].telefone%></div>
+              </article>
+          <% } %>
+      </div>
+  </section>
+  <section class="update">
+      <h3>Update Data</h3>
+      <form action="/update" method="post">
+        <div class="input">
+          <label for="id">ID</label>
+          <input type="email" id="id" name="id">
+      </div>
+        <div class="input">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+      </div>
+      <div class="input">
+          <label for="text">Email</label>
+          <input type="text" id="email" name="email">
+      </div>
+      <div class="input">
+        <label for="telefone">Telefone</label>
+        <input type="text" id="telefone" name="telefone">
+      </div>
+          <button type="submit">UPDATE</button>
+      </form>
+  </section>
+  </section>
+  <section class="delete">
+      <h3>Delete Data</h3>
+      <form action="/delete" method="post">
+          <div class="input">
+              <label for="id">ID</label>
+              <input type="text" id="id" name="id">
+          </div>
+          <button type="submit">DELETE</button>
+      </form>
+  </section>
+  <section class="Errors">
+    <h3>Errors</h3>
+    <div name="errorsSpace" onload="makeErrors()">
+        <% for(i in errors){%>
+          <p><%= errors[i].msg %></p>
+        <%}%>
+    </div>
+</section>
+  </body>
+</html>
