@@ -31,15 +31,15 @@ section h3 {
 }
 
 .insert {
-  background: #2ecc71;
+  background: #4643EB;
 }
 
 .get {
-  background: #ecf0f1;
+  background: #43B852;
 }
 
 .update {
-  background: #3498db;
+  background: #C2DB34;
 }
 
 .delete {
